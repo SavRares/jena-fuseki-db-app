@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y wget
 # Download and install Apache Jena Fuseki
 RUN wget https://dlcdn.apache.org/jena/binaries/apache-jena-fuseki-5.3.0.tar.gz && \
     tar -xzf apache-jena-fuseki-5.3.0.tar.gz && \
-    mv aapache-jena-fuseki-5.3.0 /jena-fuseki && \
+    mv apache-jena-fuseki-5.3.0 /jena-fuseki && \
     rm apache-jena-fuseki-5.3.0.tar.gz
 
 # Create the required directories
