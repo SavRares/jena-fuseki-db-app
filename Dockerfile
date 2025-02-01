@@ -1,11 +1,8 @@
-# Use the official Fuseki Docker image
-FROM stain/jena-fuseki:4.7.0
-
-# Copy your RDF data to the Fuseki data directory
-COPY newsDCMI.rdf /fuseki/base/databases/newsDCMI/newsDCMI.rdf
-
-# Expose the Fuseki port
+FROM openjdk:11-jre-slim
+RUN apt-get update && apt-get install -y wget
+RUN wget https://downloads.apache.org/jena/binaries/apache-jena-fuseki-4.7.0.tar.gz && \
+    tar -xzf apache-jena-fuseki-4.7.0.tar.gz && \
+    mv apache-jena-fuseki-4.7.0 /jena-fuseki
+COPY newsDCMI.rdf /jena-fuseki/run/databases/newsDCMI/newsDCMI.rdf
 EXPOSE 3030
-
-# Start Fuseki with your dataset
-CMD ["java", "-jar", "/jena-fuseki/fuseki-server.jar", "--update", "--mem", "/news"]
+CMD ["/jena-fuseki/fuseki-server", "--update", "--mem", "/news"]
