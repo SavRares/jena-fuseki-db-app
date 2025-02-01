@@ -1,5 +1,5 @@
-# Use a lightweight base image with Java pre-installed
-FROM openjdk:11-jre-slim
+# Use a lightweight base image with Java 17 pre-installed
+FROM eclipse-temurin:17-jre-jammy
 
 # Install necessary tools
 RUN apt-get update && apt-get install -y wget
